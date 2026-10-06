@@ -1,1 +1,4 @@
-
+<resources>
+    <string name="app_name">FocusShield</string>
+    <string name="accessibility_service_description">Detects short-form video feeds (Reels/Shorts/TikTok) to enforce daily focus limits.</string>
+</resources>
