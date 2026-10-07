@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#09090B">
 
-    <!-- Bottom Navigation Bar (Declared first so @+id/bottomNav exists for layout_above) -->
+    <!-- Bottom Navigation Bar -->
     <LinearLayout
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
@@ -262,6 +262,259 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="#27272A"
+                        android:gravity="center"
+                        android:text="⊞"
+                        android:textColor="#71717A"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="Other apps"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 apps"
+                        android:textColor="#71717A"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/timerDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardsLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="30:00"
+                android:textColor="#FFFFFF"
+                android:textSize="68sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/controlBar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@id/timerDisplay"
+                android:layout_marginTop="30dp"
+                android:background="#141416"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
+
+                <TextView
+                    android:id="@+id/btnInfinite"
+                    android:layout_width="44dp"
+                    android:layout_height="36dp"
+                    android:background="#27272A"
+                    android:gravity="center"
+                    android:text="∞"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/btnMinus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="-"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/durationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30 min"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnPlus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/swipeHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/controlBar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:text="swipe for sessions"
+                android:textColor="#71717A"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnStartBlock"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#27272A"
+                android:text="Start 30 min block"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <!-- 2. SLEEP TAB -->
+        <LinearLayout
+            android:id="@+id/tabSleep"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌙"
+                android:textSize="64sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sleep Schedule"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Auto-block feeds during bed time (11 PM - 7 AM)"
+                android:textColor="#71717A"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 3. HOME TAB -->
+        <LinearLayout
+            android:id="@+id/tabHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🏠"
+                android:textSize="64sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Focus Dashboard"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Welcome to FocusShield. Choose a mode below."
+                android:textColor="#71717A"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 4. WEBAPPS TAB -->
+        <LinearLayout
+            android:id="@+id/tabWebApps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💲"
+                android:textSize="64sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Web App Blocker"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Block distracting browser domains"
+                android:textColor="#71717A"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 5. PROFILE TAB -->
+        <LinearLayout
+            android:id="@+id/tabProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👤"
+                android:textSize="64sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="User Profile"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="FocusShield v1.0 • Settings and Preferences"
+                android:textColor="#71717A"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>
+"#27272A"
                         android:gravity="center"
                         android:text="⊞"
                         android:textColor="#71717A"
