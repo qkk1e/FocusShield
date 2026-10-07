@@ -1,63 +1,41 @@
 package com.focusshield.app.service
 
 import android.accessibilityservice.AccessibilityService
+import android.content.Context
+import android.content.Intent
 import android.view.accessibility.AccessibilityEvent
-import android.view.accessibility.AccessibilityNodeInfo
 
 class ReelsDetectorAccessibilityService : AccessibilityService() {
 
-    private val targetPackages = setOf(
+    private val blockedPackages = setOf(
         "com.instagram.android",
+        "com.zhiliaoapp.musically",
+        "com.ss.android.ugc.trill",
         "com.google.android.youtube",
-        "com.zhiliaoapp.musically"
+        "com.facebook.katana",
+        "com.snapchat.android",
+        "com.twitter.android",
+        "com.x.android"
     )
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        if (event == null || !QuotaManager.isBlockingEnabled) return
+        if (event == null) return
+
+        val prefs = getSharedPreferences("FocusShieldPrefs", Context.MODE_PRIVATE)
+        val isBlockingActive = prefs.getBoolean("IS_BLOCKING_ACTIVE", false)
+
+        if (!isBlockingActive) return
 
         val packageName = event.packageName?.toString() ?: return
-        if (packageName !in targetPackages) return
 
-        val rootNode = rootInActiveWindow ?: return
+        if (blockedPackages.contains(packageName)) {
+            // Instantly send user back to Home Screen
+            performGlobalAction(GLOBAL_ACTION_HOME)
 
-        when (event.eventType) {
-            AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED,
-            AccessibilityEvent.TYPE_VIEW_SCROLLED -> {
-                inspectAndEnforce(rootNode, packageName)
-            }
+            // Trigger Overlay Blocker Service
+            val overlayIntent = Intent(this, OverlayBlockerService::class.java)
+            startService(overlayIntent)
         }
-    }
-
-    private fun inspectAndEnforce(rootNode: AccessibilityNodeInfo, packageName: String) {
-        val isReelActive = when (packageName) {
-            "com.instagram.android" -> isMatchingNode(rootNode, "reels_viewer", "clips_viewer")
-            "com.google.android.youtube" -> isMatchingNode(rootNode, "shorts_player", "reel_recycler")
-            "com.zhiliaoapp.musically" -> isMatchingNode(rootNode, "view_pager", "main_tab")
-            else -> false
-        }
-
-        if (isReelActive) {
-            if (QuotaManager.isDailyLimitExceeded()) {
-                performGlobalAction(GLOBAL_ACTION_BACK)
-                OverlayBlockerService.showBlockerOverlay(this)
-            } else {
-                QuotaManager.startTimer()
-            }
-        } else {
-            QuotaManager.stopTimer()
-            OverlayBlockerService.hideBlockerOverlay(this)
-        }
-    }
-
-    private fun isMatchingNode(node: AccessibilityNodeInfo, vararg keywords: String): Boolean {
-        val viewId = node.viewIdResourceName ?: ""
-        if (keywords.any { viewId.contains(it, ignoreCase = true) }) return true
-
-        for (i in 0 until node.childCount) {
-            val child = node.getChild(i) ?: continue
-            if (isMatchingNode(child, *keywords)) return true
-        }
-        return false
     }
 
     override fun onInterrupt() {}
