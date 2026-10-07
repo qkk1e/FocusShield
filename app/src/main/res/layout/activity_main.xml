@@ -1,273 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#09090B"
-    android:padding="20dp">
+    android:background="#09090B">
 
-    <!-- Top Header -->
-    <RelativeLayout
-        android:id="@+id/header"
+    <!-- Main Content Frame for Dynamic Tabs -->
+    <FrameLayout
+        android:id="@+id/contentContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNav">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Full App Blocking"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="#1C1C1E"
-                android:gravity="center"
-                android:text="ⓘ"
-                android:textColor="#A1A1AA"
-                android:textSize="18sp"
-                android:layout_marginEnd="10dp"/>
-
-            <TextView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="#1C1C1E"
-                android:gravity="center"
-                android:text="⚙"
-                android:textColor="#A1A1AA"
-                android:textSize="18sp"/>
-        </LinearLayout>
-    </RelativeLayout>
-
-    <!-- Top Category Cards -->
-    <LinearLayout
-        android:id="@+id/cardsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_below="@id/header"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <!-- Social Card -->
-        <LinearLayout
-            android:layout_width="0dp"
+        <!-- 1. BLOCKING TAB -->
+        <RelativeLayout
+            android:id="@+id/tabBlocking"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:background="#141416"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="20dp"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Full App Blocking"
+                    android:textColor="#FFFFFF"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="#1C1C1E"
+                        android:gravity="center"
+                        android:text="ⓘ"
+                        android:textColor="#A1A1AA"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="#1C1C1E"
+                        android:gravity="center"
+                        android:text="⚙"
+                        android:textColor="#A1A1AA"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/cardsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_below="@id/header"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="#141416"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="#27272A"
+                        android:gravity="center"
+                        android:text="⊞"
+                        android:textColor="#71717A"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="Social Feed"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reels &amp; ForYou"
+                        android:textColor="#71717A"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="#141416"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="#27272A"
+                        android:gravity="center"
+                        android:text="⊞"
+                        android:textColor="#71717A"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="Other apps"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 apps"
+                        android:textColor="#71717A"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#27272A"
-                android:gravity="center"
-                android:text="⊞"
+                android:id="@+id/timerDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardsLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:text="30:00"
+                android:textColor="#FFFFFF"
+                android:textSize="68sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/controlBar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@id/timerDisplay"
+                android:layout_marginTop="30dp"
+                android:background="#141416"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
+
+                <TextView
+                    android:id="@+id/btnInfinite"
+                    android:layout_width="44dp"
+                    android:layout_height="36dp"
+                    android:background="#27272A"
+                    android:gravity="center"
+                    android:text="∞"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/btnMinus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="—"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/durationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30 min"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnPlus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="+"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/swipeHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/controlBar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:text="swipe for sessions"
                 android:textColor="#71717A"
-                android:textSize="20sp"/>
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnStartBlock"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#27272A"
+                android:text="🔒  Start 30 min block"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <!-- 2. SLEEP TAB -->
+        <LinearLayout
+            android:id="@+id/tabSleep"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="Social"
+                android:text="🌙"
+                android:textSize="64sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sleep Schedule"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="6 target apps"
+                android:layout_marginTop="8dp"
+                android:text="Auto-block feeds during bed time (11 PM - 7 AM)"
                 android:textColor="#71717A"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Other Apps Card -->
+        <!-- 3. HOME TAB -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/tabHome"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:background="#141416"
+            android:gravity="center"
             android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="#27272A"
-                android:gravity="center"
-                android:text="⊞"
-                android:textColor="#71717A"
-                android:textSize="20sp"/>
+            android:padding="20dp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:text="Other apps"
+                android:text="🏠"
+                android:textSize="64sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Focus Dashboard"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 apps"
-                android:textColor="#71717A"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Timer Display -->
-    <TextView
-        android:id="@+id/timerDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cardsLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="30:00"
-        android:textColor="#FFFFFF"
-        android:textSize="68sp"
-        android:textStyle="bold" />
-
-    <!-- Timer Adjust Controls Bar -->
-    <LinearLayout
-        android:id="@+id/controlBar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_below="@id/timerDisplay"
-        android:layout_marginTop="40dp"
-        android:background="#141416"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp">
-
-        <TextView
-            android:id="@+id/btnInfinite"
-            android:layout_width="44dp"
-            android:layout_height="36dp"
-            android:background="#27272A"
-            android:gravity="center"
-            android:text="∞"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/btnMinus"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="—"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/durationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="30 min"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/btnPlus"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="+"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/swipeHint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/controlBar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="swipe for sessions"
-        android:textColor="#71717A"
-        android:textSize="12sp" />
-
-    <!-- Main Action Start Button -->
-    <Button
-        android:id="@+id/btnStartBlock"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_above="@id/bottomNav"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#27272A"
-        android:text="🔒  Start 30 min block"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <!-- Bottom Navigation Bar -->
-    <LinearLayout
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_alignParentBottom="true"
-        android:background="#141416"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:weightSum="5">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🌙" android:textSize="16sp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sleep" android:textColor="#71717A" android:textSize="10sp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🔒" android:textSize="16sp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Blocking" android:textColor="#FFFFFF" android:textSize="10sp" android:textStyle="bold"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🏠" android:textSize="16sp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Home" android:textColor="#71717A" android:textSize="10sp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+                android:layout_height="wrap
+:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="💲" android:textSize="16sp"/>
